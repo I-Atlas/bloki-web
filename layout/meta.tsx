@@ -25,7 +25,7 @@ export default function Meta({
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
-      <meta property="og:image" content={image ? image : "/bloki.png"} />
+      <meta property="og:image" content={image ? image : "/images/meta.png"} />
       <title>{title}</title>
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="theme-color" content="#FCFCFD" />
@@ -38,7 +38,8 @@ export default function Meta({
 }
 
 Meta.defaultProps = {
-  title: "Home | Bloki",
-  keywords: "bloki",
-  description: "bloki",
+  title: "Главная | Bloki",
+  keywords: "bloki, collaboration, notes, university, school, homework, list, teams, notebook, creative",
+  description:
+    "Bloki — app for creating any kind of content. Take notes. Compose math homework or a shopping list. Join team and do it together. Bloki is similiar to checkered notebook and complements it with modern tools. Bloki gives you creative freedom in working with text and media.",
 };

@@ -10,7 +10,7 @@ import HeroTitle from "components/hero-title";
 
 export default function Home({}: NextPage) {
   return (
-    <PageLayout title="Home">
+    <PageLayout title="Главная" image="/images/meta.png">
       <Presentation {...presentationData} />
       {heroData.map((data, index) => (
         <Hero
