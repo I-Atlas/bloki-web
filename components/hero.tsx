@@ -1,8 +1,9 @@
-import { Stack, Heading, Text, Tag, TagLabel } from "@chakra-ui/react";
+import { Stack, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
 
 import { Section } from "components/section";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import BackgroundDecoration from "./background-decoration";
+import { HeroImage } from "./hero-image";
 
 export interface HeroProps {
   sectionId: string;
@@ -23,33 +24,49 @@ export default function Hero({
   decorationHorizontalAlign,
   decorationVerticalAlign,
 }: HeroProps) {
+  const calculatedImageDirection = useBreakpointValue({
+    base: "right",
+    lg: imageDirection,
+  });
   return (
-    <Section id={sectionId} position="relative">
+    <Section
+      mx="auto"
+      w={["90%", "85%", "80%"]}
+      id={sectionId}
+      position="relative"
+    >
       <Stack
         align="center"
-        spacing={{ base: 8, md: 10 }}
+        spacing={{ base: 4, md: 10 }}
         direction={{ base: "column", lg: "row" }}
       >
-        {imageDirection === "left" && (
-          <Image src={image} placeholder="blur" alt="hero-image" />
+        {calculatedImageDirection === "left" && (
+          <HeroImage placeholder="blur" alt="hero-image" image={image} />
         )}
         <Stack
+          mr={{
+            base: calculatedImageDirection === "right" ? 4 : 0,
+            lg: calculatedImageDirection === "right" ? 10 : 0,
+          }}
+          mb={{
+            base: calculatedImageDirection === "right" ? 8 : 0,
+            lg: calculatedImageDirection === "right" ? 10 : 0,
+          }}
           textAlign="start"
           alignItems={{ base: "center", lg: "start" }}
-          flex={1}
           spacing={{ base: 2, md: 8 }}
         >
           <Heading
             lineHeight={1.1}
-            fontWeight={700}
+            fontWeight={400}
             fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
           >
             {title}
           </Heading>
           <Text color="gray.500">{description}</Text>
         </Stack>
-        {imageDirection === "right" && (
-          <Image src={image} placeholder="blur" alt="hero-image" />
+        {calculatedImageDirection === "right" && (
+          <HeroImage placeholder="blur" alt="hero-image" image={image} />
         )}
       </Stack>
       {decorationHorizontalAlign && decorationVerticalAlign && (

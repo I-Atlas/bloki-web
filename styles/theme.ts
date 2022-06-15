@@ -7,6 +7,7 @@ import { colors } from "styles/colors";
 import CTA from './components/cta'
 import Section from './components/section'
 import SectionTitle from './components/section-title'
+import InterfaceContainer from './components/interface-container'
 
 export function makeTheme(overrides: ThemeOverride = {}) {
   const theme = extendTheme({
@@ -21,7 +22,7 @@ export const extendedTheme = extendTheme({
     useSystemColorMode: true,
   },
   fonts: {
-    heading: 'Lexend, sans-serif',
+    heading: 'Virgil, sans-serif',
     body: 'Inter, sans-serif',
   },
   styles: {
@@ -70,6 +71,7 @@ export const extendedTheme = extendTheme({
   CTA,
   Section,
   SectionTitle,
+  InterfaceContainer,
 });
 
 export const theme = makeTheme();

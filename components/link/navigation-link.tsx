@@ -20,7 +20,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({
 }) => {
   const router = useRouter();
   const link = {
-    color: useColorModeValue("#7059EB", "#7c6bdd"),
+    color: useColorModeValue("orange.500", "orange.400"),
   };
 
   return (
@@ -31,7 +31,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({
         rounded={"md"}
         _hover={{
           textDecoration: "none",
-          color: link.color
+          color: link.color,
         }}
         color={router.pathname === path ? link.color : "inherit"}
         fontWeight="700"

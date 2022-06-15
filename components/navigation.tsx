@@ -1,27 +1,23 @@
 import NextLink from "next/link";
-import {
-  Flex,
-  HStack,
-  useDisclosure,
-  IconButton,
-  Container,
-} from "@chakra-ui/react";
+import { Flex, HStack, useDisclosure, IconButton } from "@chakra-ui/react";
 import { NavigationLink } from "components/link/navigation-link";
 
-import { BlokiIcon } from "components/icons/bloki";
+import { LogoColor } from "components/icons/logo-color";
 import { routerLinks } from "helpers/configs";
 import { CgClose, CgMenu } from "react-icons/cg";
 import MobileNavigation from "components/mobile-navigation";
 import { ButtonLink } from "components/link/button-link";
+import { InterfaceContainer } from "components/interface-container";
+import { ColorModeSwitcher } from "./color-mode-switcher";
 
 export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Container py={4} maxW={1440} mx="auto" w={["90%", "85%", "80%"]}>
+    <InterfaceContainer py={4} maxW={1440} mx="auto" w={["90%", "85%", "80%"]}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <NextLink href="/" passHref>
-          <BlokiIcon h={36} w={36} />
+          <LogoColor h={36} w={36} />
         </NextLink>
         <HStack
           as="nav"
@@ -37,26 +33,26 @@ export default function Navigation() {
               onClose={onClose}
             />
           ))} */}
+          <ColorModeSwitcher ml={0} />
           <ButtonLink
-          href="/login"
-          display={["none", "none", "inherit"]}
-          rounded="md"
-          variant="ghost"
-          colorScheme="black"
-          fontWeight={600}
-        >
-          Войти
-        </ButtonLink>
-        <ButtonLink
-          href="/login"
-          display={["none", "none", "inherit"]}
-          rounded="md"
-          variant="solid"
-          colorScheme="orange"
-          fontWeight={600}
-        >
-          Попробовать
-        </ButtonLink>
+            href="https://bloki.app/"
+            display={["none", "none", "inherit"]}
+            rounded="md"
+            variant="ghost"
+            fontWeight={600}
+          >
+            Войти
+          </ButtonLink>
+          <ButtonLink
+            href="https://bloki.app/"
+            display={["none", "none", "inherit"]}
+            rounded="md"
+            variant="solid"
+            colorScheme="orange"
+            fontWeight={600}
+          >
+            Попробовать
+          </ButtonLink>
         </HStack>
 
         <IconButton
@@ -70,6 +66,6 @@ export default function Navigation() {
         />
       </Flex>
       <MobileNavigation isOpen={isOpen} onClose={onClose} />
-    </Container>
+    </InterfaceContainer>
   );
 }

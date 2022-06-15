@@ -1,5 +1,8 @@
 import type { HeroProps } from "components/hero";
 import fileStructure from "public/images/file-structure.png";
+import workspaces from "public/images/workspaces.png";
+import libraries from "public/images/libraries.png";
+import teams from "public/images/teams.png";
 
 export const heroData: HeroProps[] = [
   {
@@ -15,7 +18,7 @@ export const heroData: HeroProps[] = [
   {
     sectionId: "workspaces",
     imageDirection: "right",
-    image: fileStructure,
+    image: workspaces,
     title: "Воркспейсы",
     description:
       "Создавайте неограниченное колличество разных воркспейсовдля разных задач. Будь то занятие математикой ,заметки по работе,идеи по новому проекту",
@@ -23,7 +26,7 @@ export const heroData: HeroProps[] = [
   {
     sectionId: "teams",
     imageDirection: "left",
-    image: fileStructure,
+    image: teams,
     title: "Команда",
     description:
       "Приглашайте в созданные воркспейсынеогранниченное количество людей и создавайте вместе с ними",
@@ -33,7 +36,7 @@ export const heroData: HeroProps[] = [
   {
     sectionId: "libraries",
     imageDirection: "right",
-    image: fileStructure,
+    image: libraries,
     title: "Библиотеки",
     description:
       "Вы всегда можете обратиться к готовым библиотекам либозагрузить свои материалыи использовать их",

@@ -6,6 +6,7 @@ import { RemoveScroll } from "react-remove-scroll";
 import { MotionBox } from "styles/motion";
 import { AnimatePresence } from "framer-motion";
 import { ButtonLink } from "components/link/button-link";
+import { ColorModeSwitcher } from "./color-mode-switcher";
 
 interface MobileNavigationProps {
   onClose: () => void;
@@ -35,7 +36,7 @@ export default function MobileNavigation({
               bg={"transparent"}
               align={"center"}
               justifyContent={"center"}
-              spacing={6}
+              spacing={8}
             >
               {/* {routerLinks.map((link, index) => (
                 <NavigationLink
@@ -46,17 +47,26 @@ export default function MobileNavigation({
                   fontSize={"3xl"}
                 />
               ))} */}
-              <Box w="full" pt={24}>
+              <ColorModeSwitcher ml={0} />
                 <ButtonLink
-                  href="/login"
-                  onClick={onClose}
+                  href="https://bloki.app/"
+                  rounded="md"
+                  variant="solid"
+                  fontWeight={600}
                   w="full"
-                  rounded="full"
-                  fontWeight={500}
                 >
-                  Get started
+                  Войти
                 </ButtonLink>
-              </Box>
+                <ButtonLink
+                  href="https://bloki.app/"
+                  rounded="md"
+                  variant="solid"
+                  colorScheme="orange"
+                  fontWeight={600}
+                  w="full"
+                >
+                  Попробовать
+                </ButtonLink>
             </Stack>
           </MotionBox>
         </RemoveScroll>

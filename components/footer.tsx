@@ -7,20 +7,18 @@ import {
   Text,
   useDisclosure,
   SimpleGrid,
-  Input,
   IconButton,
-  Container,
   Divider,
-  Flex,
-  VStack,
+  ButtonGroup,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { NavigationLink } from "components/link/navigation-link";
-import { BlokiIcon } from "components/icons/bloki";
 
-import { BsArrowRight } from "react-icons/bs";
-import { configs } from "helpers/configs";
-import { ColorModeSwitcher } from "components/color-mode-switcher";
+import { footerData } from "helpers/footer";
+import { FaGithub } from "react-icons/fa";
+import { InterfaceContainer } from "components/interface-container";
+import { LogoNoColor } from "./icons/logo-no-color";
 
 interface FooterLinkHeaderProps {
   children: ReactNode;
@@ -37,61 +35,60 @@ const FooterLinkHeader: FC<FooterLinkHeaderProps> = ({ children }) => {
 export default function Footer() {
   const { onClose } = useDisclosure();
   return (
-    <Container
+    <InterfaceContainer
       as="footer"
       role="contentinfo"
       py={4}
-      maxW={1440}
+      innerWidth={1440}
       mx="auto"
       w={["90%", "85%", "80%"]}
     >
-      <Stack alignItems="center">
+      <Stack py={4} alignItems="center">
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
-          spacing={12}
+          spacing={8}
           py={4}
         >
           <Stack spacing={6}>
             <NextLink href="/" passHref>
-              <BlokiIcon h={36} w={56} />
+              <LogoNoColor h={63} w={199} />
             </NextLink>
-            <ColorModeSwitcher ml={0} />
           </Stack>
-          <Stack align={"flex-start"}>
-            <FooterLinkHeader>Legal</FooterLinkHeader>
-            {configs.terms.map((link, index) => (
-              <NavigationLink
-                key={index}
-                name={link.name}
-                path={link.path}
-                onClose={onClose}
-              />
-            ))}
-          </Stack>
-          <Stack align={"flex-start"}>
-            <FooterLinkHeader>Social</FooterLinkHeader>
-            {configs.social.map((link, index) => (
-              <NavigationLink
-                key={index}
-                name={link.name}
-                path={link.path}
-                onClose={onClose}
-              />
-            ))}
-          </Stack>
-          <Stack align={"flex-start"}>
-            <FooterLinkHeader>Legal</FooterLinkHeader>
-            {configs.terms.map((link, index) => (
-              <NavigationLink
-                key={index}
-                name={link.name}
-                path={link.path}
-                onClose={onClose}
-              />
-            ))}
-          </Stack>
+          {footerData.elements.map((element, index) => (
+            <Stack key={index} align={"flex-start"}>
+              <FooterLinkHeader>{element.name}</FooterLinkHeader>
+              {element.links.map((link, index) => (
+                <NavigationLink
+                  key={index}
+                  name={link.name}
+                  path={link.path}
+                  onClose={onClose}
+                />
+              ))}
+            </Stack>
+          ))}
         </SimpleGrid>
       </Stack>
-    </Container>
+      <Divider />
+      <Stack
+        pt="8"
+        pb="12"
+        justify="space-between"
+        direction={{ base: "column-reverse", md: "row" }}
+        align="center"
+      >
+        <Text fontSize="md">{footerData.copyright}</Text>
+        <ButtonGroup variant="ghost">
+          <NextLink href={footerData.github} passHref>
+            <IconButton
+              as="a"
+              aria-label="GitHub"
+              icon={<FaGithub fontSize="2.5rem" />}
+              rounded="full"
+            />
+          </NextLink>
+        </ButtonGroup>
+      </Stack>
+    </InterfaceContainer>
   );
 }
